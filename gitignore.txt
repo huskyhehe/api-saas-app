@@ -1,5 +1,0 @@
-env
-node_modules
-build
-media
-static_root
