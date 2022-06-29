@@ -4,13 +4,11 @@ import {
     Form,
     Grid,
     Header,
-    Image,
     Message,
     Segment
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import Logo from "../assets/logo.svg";
 import { authLogin as login } from "../store/actions/auth";
 
 class NormalLoginForm extends React.Component {
@@ -46,65 +44,64 @@ class NormalLoginForm extends React.Component {
             return <Redirect to="/" />;
         }
         return (
-            <div style={{ marginTop: "100px" }}>
-                <Grid
-                    textAlign="center"
-                    style={{ height: "100%" }}
-                    verticalAlign="middle"
-                >
-                    <Grid.Column style={{ maxWidth: 450 }}>
-                        <Header as="h2" color="teal" textAlign="center">
-                            <Image src={Logo} /> Login to your account
-                        </Header>
-                        <Form size="large" onSubmit={this.handleSubmit}>
-                            <Segment stacked>
-                                <Form.Input
-                                    fluid
-                                    icon="user"
-                                    iconPosition="left"
-                                    placeholder="Username"
-                                    onChange={this.handleChange}
-                                    name="username"
-                                />
-                                <Form.Input
-                                    fluid
-                                    icon="lock"
-                                    iconPosition="left"
-                                    placeholder="Password"
-                                    type="password"
-                                    onChange={this.handleChange}
-                                    name="password"
-                                />
+            <Grid
+                textAlign="center"
+                style={{ marginTop: "10rem" }}
+                verticalAlign="middle"
+            >
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as="h2" color="teal" textAlign="center">
+                        Login to your account
+                    </Header>
+                    <Form size="large" onSubmit={this.handleSubmit}>
+                        <Segment stacked>
+                            <Form.Input
+                                fluid
+                                icon="user"
+                                iconPosition="left"
+                                placeholder="Username"
+                                onChange={this.handleChange}
+                                name="username"
+                            />
+                            <Form.Input
+                                fluid
+                                icon="lock"
+                                iconPosition="left"
+                                placeholder="Password"
+                                type="password"
+                                onChange={this.handleChange}
+                                name="password"
+                            />
 
-                                <Button
-                                    color="teal"
-                                    fluid
-                                    size="large"
-                                    disabled={loading}
-                                    loading={loading}
-                                >
-                                    Login
-                                </Button>
-                            </Segment>
-                        </Form>
-                        {formError && (
-                            <Message negative>
-                                <Message.Header>There was an error</Message.Header>
-                                <p>{formError}</p>
-                            </Message>
-                        )}
-                        {error && (
-                            <Message negative>
-                                <Message.Header>There was an error</Message.Header>
-                                <p>{error}</p>
-                            </Message>
-                        )}
-                        <Message>
-                            New to us? <Link to="/signup">Sign Up</Link>
+                            <Button
+                                color="teal"
+                                fluid
+                                size="large"
+                                disabled={loading}
+                                loading={loading}
+                            >
+                                Login
+                            </Button>
+                        </Segment>
+                    </Form>
+                    {formError && (
+                        <Message negative>
+                            <Message.Header>There was an error</Message.Header>
+                            <p>{formError}</p>
                         </Message>
-                    </Grid.Column>
-                </Grid>
-            </div>
+                    )}
+                    {error && (
+                        <Message negative>
+                            <Message.Header>There was an error</Message.Header>
+                            <p>{error}</p>
+                        </Message>
+                    )}
+                    <Message>
+                        New to us? <Link to="/signup">Sign Up</Link>
+                    </Message>
+                </Grid.Column>
+            </Grid>
+
         );
     }
 }
