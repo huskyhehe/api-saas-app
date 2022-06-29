@@ -9,7 +9,7 @@ import {
     Segment
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import AI from "../assets/ai.svg";
+import AI from "../assets/images/ai.svg";
 
 const HomepageLayout = () => (
     <React.Fragment>
