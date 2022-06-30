@@ -1,6 +1,6 @@
 {
-  "name": "django-react-boilerplate",
-  "version": "0.3.0",
+  "name": "facial-recognition-saas",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@artsy/fresnel": "^3.5.0",
