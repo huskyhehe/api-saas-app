@@ -9,9 +9,9 @@ import {
     Segment
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import AI from "../assets/images/ai.svg";
+import AIImg from "../assets/ai.svg";
 
-const HomepageLayout = () => (
+const Home = () => (
     <React.Fragment>
         <Segment style={{ padding: "8em 0em" }} vertical>
             <Grid container stackable verticalAlign="middle">
@@ -26,7 +26,7 @@ const HomepageLayout = () => (
                         </p>
                     </Grid.Column>
                     <Grid.Column floated="right" width={6}>
-                        <Image rounded size="large" src={AI} />
+                        <Image rounded size="large" src={AIImg} />
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
@@ -98,4 +98,4 @@ const HomepageLayout = () => (
     </React.Fragment>
 );
 
-export default HomepageLayout;
+export default Home;
