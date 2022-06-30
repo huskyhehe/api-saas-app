@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { authSignup as signup } from "../store/actions/auth";
 
-class RegistrationForm extends React.Component {
+class Signup extends React.Component {
     state = {
         username: "",
         email: "",
@@ -170,4 +170,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(RegistrationForm);
+)(Signup);

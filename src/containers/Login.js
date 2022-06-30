@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { authLogin as login } from "../store/actions/auth";
 
-class NormalLoginForm extends React.Component {
+class Login extends React.Component {
     state = {
         username: "",
         password: "",
@@ -124,4 +124,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(NormalLoginForm);
+)(Login);
