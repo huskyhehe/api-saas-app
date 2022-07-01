@@ -1,3 +1,5 @@
+import datetime
+import math
 from django.conf import settings
 from django.contrib.auth import get_user_model, authenticate
 from django.shortcuts import render
@@ -7,8 +9,14 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
-import stripe
-stripe.api_key = settings.STRIPE_SECRET_KEY
+
+from .serializers import (
+    ChangeEmailSerializer,
+    ChangePasswordSerializer,
+    TokenSerializer,
+    SubscribeSerializer
+)
+
 
 User = get_user_model()
 
@@ -62,4 +70,38 @@ class ChangePasswordView(APIView):
 
     def post(self, request, *args, **kwargs):
         user = get_user_from_token(request)
+        password_serializer = ChangePasswordSerializer(data=request.data)
+        if password_serializer.is_valid():
+            password = password_serializer.data.get('password')
+            confirm_password = password_serializer.data.get('confirm_password')
+            current_password = password_serializer.data.get('current_password')
+            auth_user = authenticate(
+                username=user.username,
+                password=current_password
+            )
+            if auth_user is not None:
+                if password == confirm_password:
+                    auth_user.set_password(password)
+                    auth_user.save()
+                    return Response(status=HTTP_200_OK)
+                return Response({"message": "The passwords did not match"}, status=HTTP_400_BAD_REQUEST)
+            return Response({"message": "Incorrect user details"}, status=HTTP_400_BAD_REQUEST)
         return Response({"message": "Did not receive the correct data"}, status=HTTP_400_BAD_REQUEST)
+
+
+class UserDetailsView(APIView):
+    permission_classes = (IsAuthenticated, )
+
+    def get(self, request, *args, **kwargs):
+        user = get_user_from_token(request)
+        membership = user.membership
+        today = datetime.datetime.now()
+        month_start = datetime.date(today.year, today.month, 1)
+
+        obj = {
+            'membershipType': membership.get_type_display(),
+            'free_trial_end_date': membership.end_date,
+            'next_billing_date': membership.end_date,
+
+        }
+        return Response(obj)
