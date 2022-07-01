@@ -1,8 +1,9 @@
 {
-  "name": "django-react-boilerplate",
-  "version": "0.3.0",
+  "name": "facial-recognition-saas",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@artsy/fresnel": "^3.5.0",
     "axios": "^0.19.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -10,6 +11,7 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.0.1",
+    "react-stripe-elements": "^6.1.2",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
