@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import BaseRouter from "./routes";
 import * as actions from "./store/actions/auth";
 import "semantic-ui-css/semantic.min.css";
-import CustomLayout from "./containers/Layout";
+import CustomLayout from "./containers/CustomLayout";
 
 class App extends Component {
     componentDidMount() {
