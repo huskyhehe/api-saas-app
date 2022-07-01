@@ -25,3 +25,5 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+CORS_ORIGIN_ALLOW_ALL = True
