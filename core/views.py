@@ -44,5 +44,22 @@ class ChangeEmailView(APIView):
 
     def post(self, request, *args, **kwargs):
         user = get_user_from_token(request)
+        email_serializer = ChangeEmailSerializer(data=request.data)
+        if email_serializer.is_valid():
+            email = email_serializer.data.get('email')
+            confirm_email = email_serializer.data.get('confirm_email')
+            if email == confirm_email:
+                user.email = email
+                user.save()
+                return Response({"email": email}, status=HTTP_200_OK)
+            return Response({"message": "The emails did not match"}, status=HTTP_400_BAD_REQUEST)
 
+        return Response({"message": "Did not receive the correct data"}, status=HTTP_400_BAD_REQUEST)
+
+
+class ChangePasswordView(APIView):
+    permission_classes = (IsAuthenticated, )
+
+    def post(self, request, *args, **kwargs):
+        user = get_user_from_token(request)
         return Response({"message": "Did not receive the correct data"}, status=HTTP_400_BAD_REQUEST)
