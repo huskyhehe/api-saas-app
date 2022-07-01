@@ -12,6 +12,15 @@ class FileUploadView(APIView):
         return Response({"test": True}, status=HTTP_200_OK)
 
 
+class UserEmailView(APIView):
+    permission_classes = (IsAuthenticated, )
+
+    def get(self, request, *args, **kwargs):
+        user = get_user_from_token(request)
+        obj = {'email': user.email}
+        return Response(obj)
+
+
 class ChangeEmailView(APIView):
     permission_classes = (IsAuthenticated, )
 
