@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Container, Segment, Header, Menu } from "semantic-ui-react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import { logout } from "../../store/actions/auth";
 
