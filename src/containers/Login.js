@@ -44,7 +44,7 @@ class Login extends React.Component {
             return <Redirect to="/" />;
         }
         return (
-            <div style={{ marginTop: "10rem" }}>
+            <div style={{ marginTop: "100px" }}>
                 <Grid
                     textAlign="center"
                     style={{ height: "100%" }}
