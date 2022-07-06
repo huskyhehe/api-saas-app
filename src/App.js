@@ -12,6 +12,7 @@ class App extends Component {
     }
 
     render() {
+        console.log(state.auth.token);
         return (
             <Router>
                 <CustomLayout {...this.props}>
