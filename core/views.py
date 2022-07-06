@@ -38,6 +38,7 @@ class FileUploadView(APIView):
 
     def post(self, request, *args, **kwargs):
 
+        # limit the content length to 5MB
         content_length = request.META.get('CONTENT_LENGTH')  # bytes
         if int(content_length) > 5000000:
             return Response({"message": "Image size is greater than 5MB"}, status=HTTP_400_BAD_REQUEST)
